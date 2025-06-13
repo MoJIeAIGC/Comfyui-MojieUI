@@ -1,0 +1,419 @@
+{
+  "6": {
+    "inputs": {
+      "text": "A stylish and elegant Blonde with a model-like figure, dressed in a professional yet fashionable outfit, such as a tailored blazer, slim-fit trousers, and classic heels. She has a confident and warm expression, carrying a sleek leather briefcase, walking in a modern urban setting. Soft natural lighting, realistic details, and a sophisticated atmosphere",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "clip": [
+        "117",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "10": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "26": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "Flux引导"
+    }
+  },
+  "64": {
+    "inputs": {
+      "text": "",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "clip": [
+        "117",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "68": {
+    "inputs": {
+      "max_shift": 1.1500000000000001,
+      "base_shift": 0.5000000000000001,
+      "width": [
+        "126",
+        1
+      ],
+      "height": [
+        "126",
+        2
+      ],
+      "model": [
+        "116",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingFlux",
+    "_meta": {
+      "title": "采样算法（Flux）"
+    }
+  },
+  "85": {
+    "inputs": {
+      "context_expand_pixels": 20,
+      "context_expand_factor": 1.0000000000000002,
+      "fill_mask_holes": false,
+      "blur_mask_pixels": 30,
+      "invert_mask": false,
+      "blend_pixels": 16,
+      "rescale_algorithm": "bicubic",
+      "mode": "free size",
+      "force_width": 1024,
+      "force_height": 1024,
+      "rescale_factor": 1.0000000000000002,
+      "min_width": 512,
+      "min_height": 512,
+      "max_width": 1024,
+      "max_height": 1024,
+      "padding": 32,
+      "image": [
+        "139",
+        0
+      ],
+      "mask": [
+        "136",
+        0
+      ]
+    },
+    "class_type": "InpaintCrop",
+    "_meta": {
+      "title": "✂️ Inpaint Crop"
+    }
+  },
+  "86": {
+    "inputs": {
+      "rescale_algorithm": "bislerp",
+      "stitch": [
+        "85",
+        0
+      ],
+      "inpainted_image": [
+        "111",
+        0
+      ]
+    },
+    "class_type": "InpaintStitch",
+    "_meta": {
+      "title": "✂️ Inpaint Stitch"
+    }
+  },
+  "102": {
+    "inputs": {
+      "noise": [
+        "105",
+        0
+      ],
+      "guider": [
+        "107",
+        0
+      ],
+      "sampler": [
+        "104",
+        0
+      ],
+      "sigmas": [
+        "103",
+        0
+      ],
+      "latent_image": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "自定义采样器（高级）"
+    }
+  },
+  "103": {
+    "inputs": {
+      "scheduler": "beta",
+      "steps": 25,
+      "denoise": 0.4000000000000001,
+      "model": [
+        "145",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "基本调度器"
+    }
+  },
+  "104": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "K采样器选择"
+    }
+  },
+  "105": {
+    "inputs": {
+      "noise_seed": 946447075307077
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "随机噪波"
+    }
+  },
+  "107": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "68",
+        0
+      ],
+      "positive": [
+        "26",
+        0
+      ],
+      "negative": [
+        "64",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFG引导器"
+    }
+  },
+  "108": {
+    "inputs": {
+      "pixels": [
+        "85",
+        1
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE编码"
+    }
+  },
+  "110": {
+    "inputs": {
+      "samples": [
+        "108",
+        0
+      ],
+      "mask": [
+        "85",
+        2
+      ]
+    },
+    "class_type": "SetLatentNoiseMask",
+    "_meta": {
+      "title": "设置Latent噪波遮罩"
+    }
+  },
+  "111": {
+    "inputs": {
+      "samples": [
+        "102",
+        1
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "116": {
+    "inputs": {
+      "model_path": "svdq-int4-flux.1-dev",
+      "cache_threshold": 0,
+      "attention": "nunchaku-fp16",
+      "cpu_offload": "auto",
+      "device_id": 0,
+      "data_type": "bfloat16",
+      "i2f_mode": "enabled"
+    },
+    "class_type": "NunchakuFluxDiTLoader",
+    "_meta": {
+      "title": "Nunchaku FLUX DiT Loader"
+    }
+  },
+  "117": {
+    "inputs": {
+      "clip_name1": "t5xxl_fp16.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "双CLIP加载器"
+    }
+  },
+  "126": {
+    "inputs": {
+      "image": [
+        "139",
+        0
+      ]
+    },
+    "class_type": "GetImageSizeAndCount",
+    "_meta": {
+      "title": "Get Image Size & Count"
+    }
+  },
+  "129": {
+    "inputs": {
+      "filename_prefix": "trmjoutput",
+      "with_workflow": false,
+      "metadata_extra": "{\n  \"Title\": \"Image generated by qihuaimage\",\n  \"Description\": \"More info: www.qihuaimage.com\"\n}",
+      "image": [
+        "86",
+        0
+      ]
+    },
+    "class_type": "Save image with extra metadata [Crystools]",
+    "_meta": {
+      "title": "🪛 Save image with extra metadata"
+    }
+  },
+  "135": {
+    "inputs": {
+      "width": 512,
+      "height": 512,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": false,
+      "divisible_by": 2,
+      "crop": "disabled",
+      "image": [
+        "144",
+        0
+      ],
+      "width_input": [
+        "139",
+        1
+      ],
+      "height_input": [
+        "139",
+        2
+      ],
+      "get_image_size": [
+        "139",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJ",
+    "_meta": {
+      "title": "Resize Image"
+    }
+  },
+  "136": {
+    "inputs": {
+      "channel": "red",
+      "image": [
+        "135",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "图像转换为遮罩"
+    }
+  },
+  "139": {
+    "inputs": {
+      "image": [
+        "143",
+        0
+      ]
+    },
+    "class_type": "GetImageSizeAndCount",
+    "_meta": {
+      "title": "Get Image Size & Count"
+    }
+  },
+  "142": {
+    "inputs": {
+      "anything": [
+        "86",
+        0
+      ]
+    },
+    "class_type": "easy cleanGpuUsed",
+    "_meta": {
+      "title": "清理显存占用"
+    }
+  },
+  "143": {
+    "inputs": {
+      "url": "https://qihuaimage.tos-cn-guangzhou.volces.com/743a40ca-c8e6-4c2f-90d8-da323bd4e555.png",
+      "timeout": 60,
+      "proxy": ""
+    },
+    "class_type": "LoadSingleImageFromURL",
+    "_meta": {
+      "title": "Load Single Image From URL"
+    }
+  },
+  "144": {
+    "inputs": {
+      "url": "https://qihuaimage.tos-cn-guangzhou.volces.com/f7bd296e-fa3c-49e7-87b8-988ce8deb33a.png",
+      "timeout": 60,
+      "proxy": ""
+    },
+    "class_type": "LoadSingleImageFromURL",
+    "_meta": {
+      "title": "Load Single Image From URL"
+    }
+  },
+  "145": {
+    "inputs": {
+      "sage_attention": "auto",
+      "model": [
+        "116",
+        0
+      ]
+    },
+    "class_type": "PathchSageAttentionKJ",
+    "_meta": {
+      "title": "Patch Sage Attention KJ"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.el-overlay{
+  //backdrop-filter: blur(3px);
+}
+.el-card{
+  border-radius:10px!important;
+}
+.el-dialog{
+  border-radius:10px!important;
+}
+.el-menu-item:hover:not(.is-active),.el-sub-menu__title:hover{
+  background-color: var(--sidebar-bg-hover-color)!important;
+  color: var(--sidebar-text-hover-color)!important;
+}

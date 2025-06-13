@@ -1,0 +1,212 @@
+{
+  "3": {
+    "inputs": {
+      "noise_seed": 831396696661989
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "随机噪波"
+    }
+  },
+  "5": {
+    "inputs": {
+      "text": "chinese_text, english_text, korean_text,text,watermark, ",
+      "clip": [
+        "28",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "6": {
+    "inputs": {
+      "samples": [
+        "29",
+        0
+      ],
+      "vae": [
+        "28",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "14": {
+    "inputs": {
+      "images": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "预览图像"
+    }
+  },
+  "17": {
+    "inputs": {
+      "string": "A sofa，in the room"
+    },
+    "class_type": "Primitive string multiline [Crystools]",
+    "_meta": {
+      "title": "🪛 Primitive string multiline"
+    }
+  },
+  "21": {
+    "inputs": {
+      "strength": 0.6,
+      "start_percent": 0,
+      "end_percent": 0.6,
+      "positive": [
+        "30",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ],
+      "control_net": [
+        "27",
+        0
+      ],
+      "vae": [
+        "28",
+        2
+      ],
+      "image": [
+        "25",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplySD3",
+    "_meta": {
+      "title": "应用ControlNet"
+    }
+  },
+  "24": {
+    "inputs": {
+      "control_net_name": "xinsir_union_promax.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "加载ControlNet模型"
+    }
+  },
+  "25": {
+    "inputs": {
+      "merge_with_lineart": "lineart_standard",
+      "resolution": 1280,
+      "lineart_lower_bound": 0,
+      "lineart_upper_bound": 1,
+      "object_min_size": 36,
+      "object_connectivity": 1,
+      "image": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "AnyLineArtPreprocessor_aux",
+    "_meta": {
+      "title": "AnyLine Lineart"
+    }
+  },
+  "27": {
+    "inputs": {
+      "type": "auto",
+      "control_net": [
+        "24",
+        0
+      ]
+    },
+    "class_type": "SetUnionControlNetType",
+    "_meta": {
+      "title": "设置UnionControlNet类型"
+    }
+  },
+  "28": {
+    "inputs": {
+      "ckpt_name": "heige_roomXL.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Checkpoint加载器（简易）"
+    }
+  },
+  "29": {
+    "inputs": {
+      "add_noise": "enable",
+      "noise_seed": 774192213210679,
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "start_at_step": 0,
+      "end_at_step": 10000,
+      "return_with_leftover_noise": "disable",
+      "model": [
+        "28",
+        0
+      ],
+      "positive": [
+        "21",
+        0
+      ],
+      "negative": [
+        "21",
+        1
+      ],
+      "latent_image": [
+        "31",
+        0
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "K采样器（高级）"
+    }
+  },
+  "30": {
+    "inputs": {
+      "text": [
+        "17",
+        0
+      ],
+      "clip": [
+        "28",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "31": {
+    "inputs": {
+      "width": 1280,
+      "height": 1280,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "空Latent图像"
+    }
+  },
+  "32": {
+    "inputs": {
+      "url": "",
+      "timeout": 60,
+      "proxy": ""
+    },
+    "class_type": "LoadSingleImageFromURL",
+    "_meta": {
+      "title": "Load Single Image From URL"
+    }
+  }
+}

@@ -1,0 +1,112 @@
+html, body {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+#app {
+  //高度和宽度100%
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.flex-space-between {
+  justify-content: space-between;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+//创建一个for循环生成gap-10px的gap
+@for $i from 1 through 10 {
+  .gap-#{$i} {
+    gap: #{$i}px;
+  }
+}
+
+//创建一个mt10px的margin-top
+@for $i from 1 through 10 {
+  .mt-#{$i} {
+    margin-top: #{$i}px;
+  }
+}
+
+@for $i from 1 through 10 {
+  .mb-#{$i} {
+    margin-bottom: #{$i}px;
+  }
+}
+
+@for $i from 1 through 10 {
+  .ml-#{$i} {
+    margin-left: #{$i}px;
+  }
+}
+
+@for $i from 1 through 10 {
+  .mr-#{$i} {
+    margin-right: #{$i}px;
+  }
+}
+
+
+.flex-column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flex-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.left, .right {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  flex-direction: row;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover, &:active, &:focus, &:visited, &:link {
+    text-decoration: none;
+  }
+}
+
+//v-cloak
+[v-cloak] {
+  display: none !important;
+}
+
+//fade
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s; /* 设置过渡的持续时间和属性 */
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0; /* 设置进入和离开时的透明度 */
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/logo.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>奇画AI，AI电商出图，一站全搞定
+    </title>
+    <meta name="keywords" content="qihua，qihuaimage，奇画,奇画AI，AI编图，迁移替换，产品替换，局部调整，智能扩图，内补消除, 商品换背景，商品合成，商品替换，换衣，范例，对话，gpt-4o,gpt4o,image">
+    <meta name="Description" content="首页，画廊，范例，对话">
+    <style>
+        .spinner-box {
+            position: fixed;
+            background-color: #0a0b0e;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+
+        .spinner-box .spinner {
+            background-image: linear-gradient(rgb(186, 66, 255) 35%, rgb(0, 225, 255));
+            width: 200px;
+            height: 200px;
+            animation: spinning82341 1.7s linear infinite;
+            text-align: center;
+            border-radius: 100px;
+            filter: blur(1px);
+            box-shadow: 0 -5px 30px 0 rgb(186, 66, 255), 0 5px 30px 0 rgb(0, 225, 255);
+            position: absolute;
+            top: calc(50% - 100px);
+            left: calc(50% - 100px);
+        }
+
+        .spinner-box .spinner .spinner1 {
+            background-color: rgb(36, 36, 36);
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            filter: blur(10px);
+        }
+        .spinner-box .spinner-text {
+            width: 200px;
+            height: 100px;
+            line-height: 50px;
+            color: rgb(0, 225, 255);
+            background: initial;
+            font-size: 24px;
+            text-align: center;
+            position: absolute;
+            top: calc(50% - 50px);
+            left: calc(50% - 100px);
+            z-index: 333;
+        }
+
+        @keyframes spinning82341 {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <script src="/glfx.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="spinner-box">
+        <div class="spinner">
+            <div class="spinner1"></div>
+        </div>
+        <div class="spinner-text">加载中<br>请等待</div>
+    </div>
+</div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

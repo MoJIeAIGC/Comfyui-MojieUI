@@ -1,0 +1,85 @@
+//渐变
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+//缩放
+.zoom-enter-active, .zoom-leave-active {
+  transition: all 0.3s;
+}
+.zoom-enter-from{
+  transform: scale(1.1);
+  opacity: 0.5;
+}
+.zoom-leave-form{
+  transform: scale(1);
+  opacity: 1;
+}
+.zoom-leave-to{
+  transform: scale(0.5);
+  opacity: 0;
+}
+
+//滑动
+.slide-enter-active, .slide-leave-active {
+  transition: all 0.3s;
+}
+.slide-enter-from{
+  //transform: translateX(-50px);
+  opacity: 0.5;
+}
+.side-enter-to{
+  opacity: 1;
+}
+.slide-leave-form{
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide-leave-to{
+  transform: translateX(100px);
+  opacity: 0;
+}
+
+//底部消退，顶部弹出
+.bottom-enter-active, .bottom-leave-active {
+  transition: all 0.3s;
+}
+.bottom-enter-from{
+  transform: translateY(-10%);
+  opacity: 0.5;
+}
+.bottom-enter-to{
+  transform: translateY(0);
+  opacity: 1;
+}
+.bottom-leave-form{
+  transform: translateY(0);
+  opacity: 1;
+}
+.bottom-leave-to{
+  transform: translateY(50%);
+  opacity: 0;
+}
+//旋转
+.rotate-enter-active, .rotate-leave-active {
+  transition: all 0.3s;
+}
+.rotate-enter-from{
+  transform: rotate(-45deg);
+  opacity: 0.5;
+}
+.rotate-enter-to{
+  transform: rotate(0deg);
+  opacity: 1;
+}
+.rotate-leave-form{
+  transform: rotate(0deg);
+  opacity: 1;
+}
+.rotate-leave-to{
+  transform: rotate(90deg);
+  opacity: 0;
+}

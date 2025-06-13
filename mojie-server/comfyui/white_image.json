@@ -1,0 +1,157 @@
+{
+  "11": {
+    "inputs": {
+      "detail_method": "VITMatte",
+      "detail_erode": 1,
+      "detail_dilate": 1,
+      "black_point": 0.010000000000000002,
+      "white_point": 0.99,
+      "process_detail": false,
+      "device": "cuda",
+      "max_megapixels": 2,
+      "image": [
+        "60",
+        0
+      ],
+      "birefnet_model": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "LayerMask: BiRefNetUltraV2",
+    "_meta": {
+      "title": "LayerMask: BiRefNet Ultra V2(Advance)"
+    }
+  },
+  "12": {
+    "inputs": {
+      "model": "BiRefNet-general-epoch_244.pth"
+    },
+    "class_type": "LayerMask: LoadBiRefNetModel",
+    "_meta": {
+      "title": "LayerMask: Load BiRefNet Model(Advance)"
+    }
+  },
+  "13": {
+    "inputs": {
+      "width": [
+        "18",
+        0
+      ],
+      "height": [
+        "19",
+        0
+      ],
+      "color": "#ffffff"
+    },
+    "class_type": "LayerUtility: ColorImage",
+    "_meta": {
+      "title": "纯色图像"
+    }
+  },
+  "18": {
+    "inputs": {
+      "int": 1024
+    },
+    "class_type": "Primitive integer [Crystools]",
+    "_meta": {
+      "title": "整数元节点"
+    }
+  },
+  "19": {
+    "inputs": {
+      "int": 1280
+    },
+    "class_type": "Primitive integer [Crystools]",
+    "_meta": {
+      "title": "整数元节点"
+    }
+  },
+  "20": {
+    "inputs": {
+      "invert_mask": false,
+      "blend_mode": "normal",
+      "opacity": 100,
+      "x_percent": 50.00000000000001,
+      "y_percent": 50.00000000000001,
+      "mirror": "None",
+      "scale": 1.0000000000000002,
+      "aspect_ratio": 1.0000000000000002,
+      "rotate": 0,
+      "transform_method": "lanczos",
+      "anti_aliasing": 0,
+      "background_image": [
+        "13",
+        0
+      ],
+      "layer_image": [
+        "58",
+        0
+      ]
+    },
+    "class_type": "LayerUtility: ImageBlendAdvance",
+    "_meta": {
+      "title": "混合(高级)"
+    }
+  },
+  "53": {
+    "inputs": {
+      "crop_size_mult": 1.0000000000000002,
+      "bbox_smooth_alpha": 0.5000000000000001,
+      "original_images": [
+        "11",
+        0
+      ],
+      "masks": [
+        "11",
+        1
+      ]
+    },
+    "class_type": "BatchCropFromMaskAdvanced",
+    "_meta": {
+      "title": "遮罩裁剪(高级)"
+    }
+  },
+  "56": {
+    "inputs": {
+      "filename_prefix": "Products\\Products_sour\\920_",
+      "images": [
+        "20",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "58": {
+    "inputs": {
+      "width": 960,
+      "height": 960,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": true,
+      "divisible_by": 2,
+      "crop": "center",
+      "image": [
+        "53",
+        3
+      ]
+    },
+    "class_type": "ImageResizeKJ",
+    "_meta": {
+      "title": "图像缩放（KJ）"
+    }
+  },
+  "60": {
+    "inputs": {
+      "url": "",
+      "timeout": 60,
+      "proxy": ""
+    },
+    "class_type": "LoadSingleImageFromURL",
+    "_meta": {
+      "title": "Load Single Image From URL"
+    }
+  }
+}

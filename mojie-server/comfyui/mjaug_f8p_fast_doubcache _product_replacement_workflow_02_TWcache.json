@@ -1,0 +1,758 @@
+{
+  "6": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "223",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "26": {
+    "inputs": {
+      "guidance": 35,
+      "conditioning": [
+        "64",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "Flux引导"
+    }
+  },
+  "64": {
+    "inputs": {
+      "text": "This isacollagepicture, in the left Objects replacesthe Objects in the right picture",
+      "clip": [
+        "223",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "提示词"
+    }
+  },
+  "68": {
+    "inputs": {
+      "max_shift": 1.0000000000000002,
+      "base_shift": 0.5000000000000001,
+      "width": [
+        "168",
+        0
+      ],
+      "height": [
+        "168",
+        1
+      ],
+      "model": [
+        "322",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingFlux",
+    "_meta": {
+      "title": "采样算法（Flux）"
+    }
+  },
+  "86": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "89": {
+    "inputs": {
+      "noise": [
+        "92",
+        0
+      ],
+      "guider": [
+        "221",
+        0
+      ],
+      "sampler": [
+        "91",
+        0
+      ],
+      "sigmas": [
+        "90",
+        0
+      ],
+      "latent_image": [
+        "241",
+        1
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "自定义采样器（高级）"
+    }
+  },
+  "90": {
+    "inputs": {
+      "scheduler": "beta",
+      "steps": 25,
+      "denoise": 1,
+      "model": [
+        "68",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "基本调度器"
+    }
+  },
+  "91": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "K采样器选择"
+    }
+  },
+  "92": {
+    "inputs": {
+      "noise_seed": 620053153724715
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "随机噪波"
+    }
+  },
+  "96": {
+    "inputs": {
+      "samples": [
+        "89",
+        1
+      ],
+      "vae": [
+        "86",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "99": {
+    "inputs": {
+      "noise_mask": true,
+      "positive": [
+        "323",
+        0
+      ],
+      "negative": [
+        "6",
+        0
+      ],
+      "vae": [
+        "86",
+        0
+      ],
+      "pixels": [
+        "176",
+        0
+      ],
+      "mask": [
+        "198",
+        0
+      ]
+    },
+    "class_type": "InpaintModelConditioning",
+    "_meta": {
+      "title": "内补模型条件"
+    }
+  },
+  "105": {
+    "inputs": {
+      "style_model_name": "flux1-redux-dev.safetensors"
+    },
+    "class_type": "StyleModelLoader",
+    "_meta": {
+      "title": "加载风格模型"
+    }
+  },
+  "120": {
+    "inputs": {
+      "measurement": "Pixels",
+      "left": [
+        "199",
+        0
+      ],
+      "right": 0,
+      "top": 0,
+      "bottom": 0,
+      "image": [
+        "96",
+        0
+      ]
+    },
+    "class_type": "easy imageInsetCrop",
+    "_meta": {
+      "title": "图像裁切"
+    }
+  },
+  "147": {
+    "inputs": {
+      "mask": [
+        "174",
+        2
+      ]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "遮罩转换为图像"
+    }
+  },
+  "168": {
+    "inputs": {
+      "image": [
+        "176",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "174": {
+    "inputs": {
+      "context_expand_pixels": 10,
+      "context_expand_factor": 1.0000000000000002,
+      "fill_mask_holes": false,
+      "blur_mask_pixels": 20,
+      "invert_mask": false,
+      "blend_pixels": 0,
+      "rescale_algorithm": "bicubic",
+      "mode": "forced size",
+      "force_width": 1024,
+      "force_height": 1280,
+      "rescale_factor": 1.0000000000000002,
+      "min_width": 512,
+      "min_height": 512,
+      "max_width": 768,
+      "max_height": 768,
+      "padding": 32,
+      "image": [
+        "312",
+        0
+      ],
+      "mask": [
+        "305",
+        0
+      ]
+    },
+    "class_type": "InpaintCrop",
+    "_meta": {
+      "title": "✂️ Inpaint Crop"
+    }
+  },
+  "176": {
+    "inputs": {
+      "direction": "right",
+      "match_image_size": true,
+      "image1": [
+        "307",
+        0
+      ],
+      "image2": [
+        "247",
+        0
+      ]
+    },
+    "class_type": "easy imageConcat",
+    "_meta": {
+      "title": "图像联结"
+    }
+  },
+  "181": {
+    "inputs": {
+      "prompt_influence": 0.6000000000000001,
+      "reference_influence": 0.8,
+      "style_grid_size": 1,
+      "interpolation_mode": "bicubic",
+      "image_processing_mode": "center crop (square)",
+      "autocrop_padding": 0,
+      "conditioning": [
+        "26",
+        0
+      ],
+      "style_model": [
+        "105",
+        0
+      ],
+      "clip_vision": [
+        "274",
+        0
+      ],
+      "reference_image": [
+        "307",
+        0
+      ],
+      "mask": [
+        "301",
+        0
+      ]
+    },
+    "class_type": "ReduxPromptStyler",
+    "_meta": {
+      "title": "Redux Style with Prompt Control"
+    }
+  },
+  "191": {
+    "inputs": {
+      "width": [
+        "211",
+        0
+      ],
+      "height": [
+        "211",
+        1
+      ],
+      "batch_size": 1,
+      "color": 0
+    },
+    "class_type": "EmptyImage",
+    "_meta": {
+      "title": "空图像"
+    }
+  },
+  "193": {
+    "inputs": {
+      "direction": "right",
+      "match_image_size": false,
+      "image1": [
+        "191",
+        0
+      ],
+      "image2": [
+        "147",
+        0
+      ]
+    },
+    "class_type": "easy imageConcat",
+    "_meta": {
+      "title": "图像联结"
+    }
+  },
+  "198": {
+    "inputs": {
+      "channel": "red",
+      "image": [
+        "193",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "图像转换为遮罩"
+    }
+  },
+  "199": {
+    "inputs": {
+      "expression": "a/2",
+      "a": [
+        "201",
+        0
+      ]
+    },
+    "class_type": "MathExpression|pysssss",
+    "_meta": {
+      "title": "Math Expression 🐍"
+    }
+  },
+  "201": {
+    "inputs": {
+      "image": [
+        "96",
+        0
+      ]
+    },
+    "class_type": "Get resolution [Crystools]",
+    "_meta": {
+      "title": "🪛 Get resolution"
+    }
+  },
+  "202": {
+    "inputs": {
+      "rescale_algorithm": "nearest",
+      "stitch": [
+        "174",
+        0
+      ],
+      "inpainted_image": [
+        "120",
+        0
+      ]
+    },
+    "class_type": "InpaintStitch",
+    "_meta": {
+      "title": "✂️ Inpaint Stitch"
+    }
+  },
+  "211": {
+    "inputs": {
+      "image": [
+        "307",
+        0
+      ]
+    },
+    "class_type": "Get resolution [Crystools]",
+    "_meta": {
+      "title": "🪛 Get resolution"
+    }
+  },
+  "221": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "321",
+        0
+      ],
+      "positive": [
+        "99",
+        0
+      ],
+      "negative": [
+        "99",
+        1
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFG引导器"
+    }
+  },
+  "222": {
+    "inputs": {
+      "lora_name": "ACE/comfyui_subject_lora16.safetensors",
+      "strength_model": 1.0000000000000002,
+      "model": [
+        "241",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoRA加载器（仅模型）"
+    }
+  },
+  "223": {
+    "inputs": {
+      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "双CLIP加载器"
+    }
+  },
+  "241": {
+    "inputs": {
+      "multiplier": 1.0000000000000002,
+      "model": [
+        "322",
+        0
+      ],
+      "samples": [
+        "99",
+        2
+      ],
+      "mask": [
+        "198",
+        0
+      ]
+    },
+    "class_type": "DifferentialDiffusionAdvanced",
+    "_meta": {
+      "title": "Differential Diffusion Advanced"
+    }
+  },
+  "247": {
+    "inputs": {
+      "brightness": 0.30000000000000004,
+      "contrast": 0,
+      "saturation": 0,
+      "image": [
+        "174",
+        1
+      ]
+    },
+    "class_type": "AdjustBrightnessContrastSaturationNode",
+    "_meta": {
+      "title": "Brightness Contrast Saturation"
+    }
+  },
+  "272": {
+    "inputs": {
+      "crop": "center",
+      "clip_vision": [
+        "274",
+        0
+      ],
+      "image": [
+        "181",
+        1
+      ]
+    },
+    "class_type": "CLIPVisionEncode",
+    "_meta": {
+      "title": "CLIP视觉编码"
+    }
+  },
+  "274": {
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    },
+    "class_type": "AdvancedVisionLoader",
+    "_meta": {
+      "title": "Load Advanced Vision Model"
+    }
+  },
+  "276": {
+    "inputs": {
+      "filename_prefix": "trmjoutput",
+      "with_workflow": false,
+      "metadata_extra": "{\n  \"Title\": \"Image generated by qihuaimage\",\n  \"Description\": \"More info: www.qihuaimage.com\"\n}",
+      "image": [
+        "202",
+        0
+      ]
+    },
+    "class_type": "Save image with extra metadata [Crystools]",
+    "_meta": {
+      "title": "🪛 Save image with extra metadata"
+    }
+  },
+  "280": {
+    "inputs": {
+      "lora_name": "flux/FLUX.1-Turbo-Alpha.safetensors",
+      "strength_model": 1.0000000000000002,
+      "model": [
+        "222",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoRA加载器（仅模型）"
+    }
+  },
+  "301": {
+    "inputs": {
+      "channel": "red",
+      "image": [
+        "308",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "图像转换为遮罩"
+    }
+  },
+  "305": {
+    "inputs": {
+      "channel": "red",
+      "image": [
+        "311",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "图像转换为遮罩"
+    }
+  },
+  "307": {
+    "inputs": {
+      "width": 1024,
+      "height": 1280,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": false,
+      "divisible_by": 2,
+      "crop": "disabled",
+      "image": [
+        "314",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJ",
+    "_meta": {
+      "title": "Resize Image"
+    }
+  },
+  "308": {
+    "inputs": {
+      "width": 1024,
+      "height": 1280,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": false,
+      "divisible_by": 2,
+      "crop": "disabled",
+      "image": [
+        "313",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJ",
+    "_meta": {
+      "title": "Resize Image"
+    }
+  },
+  "311": {
+    "inputs": {
+      "url": "",
+      "timeout": 60,
+      "proxy": ""
+    },
+    "class_type": "LoadSingleImageFromURL",
+    "_meta": {
+      "title": "Load Single Image From URL"
+    }
+  },
+  "312": {
+    "inputs": {
+      "url": "",
+      "timeout": 60,
+      "proxy": ""
+    },
+    "class_type": "LoadSingleImageFromURL",
+    "_meta": {
+      "title": "Load Single Image From URL"
+    }
+  },
+  "313": {
+    "inputs": {
+      "url": "",
+      "timeout": 60,
+      "proxy": ""
+    },
+    "class_type": "LoadSingleImageFromURL",
+    "_meta": {
+      "title": "Load Single Image From URL"
+    }
+  },
+  "314": {
+    "inputs": {
+      "url": "",
+      "timeout": 60,
+      "proxy": ""
+    },
+    "class_type": "LoadSingleImageFromURL",
+    "_meta": {
+      "title": "Load Single Image From URL"
+    }
+  },
+  "316": {
+    "inputs": {
+      "model_type": "flux",
+      "rel_l1_thresh": 0.4000000000000001,
+      "max_skip_steps": 2,
+      "model": [
+        "280",
+        0
+      ]
+    },
+    "class_type": "TeaCache",
+    "_meta": {
+      "title": "TeaCache"
+    }
+  },
+  "317": {
+    "inputs": {
+      "object_to_patch": "diffusion_model",
+      "residual_diff_threshold": 0.12000000000000002,
+      "start": 0,
+      "end": 1,
+      "max_consecutive_cache_hits": -1,
+      "model": [
+        "316",
+        0
+      ]
+    },
+    "class_type": "ApplyFBCacheOnModel",
+    "_meta": {
+      "title": "Apply First Block Cache"
+    }
+  },
+  "319": {
+    "inputs": {
+      "backend": "inductor",
+      "fullgraph": false,
+      "mode": "default",
+      "double_blocks": "0-18",
+      "single_blocks": "0-37",
+      "dynamic": false,
+      "dynamo_cache_size_limit": 64,
+      "model": [
+        "317",
+        0
+      ]
+    },
+    "class_type": "TorchCompileModelFluxAdvanced",
+    "_meta": {
+      "title": "TorchCompileModelFluxAdvanced"
+    }
+  },
+  "321": {
+    "inputs": {
+      "patch_order": "weight_patch_first",
+      "full_load": "auto",
+      "model": [
+        "319",
+        0
+      ]
+    },
+    "class_type": "PatchModelPatcherOrder",
+    "_meta": {
+      "title": "Patch Model Patcher Order"
+    }
+  },
+  "322": {
+    "inputs": {
+      "unet_name": "MJ-AUGment-f8p.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "EnhancedLoadDiffusionModel",
+    "_meta": {
+      "title": "Load Diffusion Model+"
+    }
+  },
+  "323": {
+    "inputs": {
+      "strength": 0.8000000000000002,
+      "conditioning": [
+        "181",
+        0
+      ],
+      "style_model": [
+        "105",
+        0
+      ],
+      "clip_vision_output": [
+        "272",
+        0
+      ]
+    },
+    "class_type": "StyleModelApplyAdvanced",
+    "_meta": {
+      "title": "Style Model Apply Advanced"
+    }
+  }
+}

@@ -1,0 +1,339 @@
+{
+  "6": {
+    "inputs": {
+      "text": "The image on the left is a chair, The image on the right is a chair in the room",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "clip": [
+        "117",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "10": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "26": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "Flux引导"
+    }
+  },
+  "64": {
+    "inputs": {
+      "text": "",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "clip": [
+        "117",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "68": {
+    "inputs": {
+      "max_shift": 1.1500000000000001,
+      "base_shift": 0.5,
+      "width": [
+        "126",
+        1
+      ],
+      "height": [
+        "126",
+        2
+      ],
+      "model": [
+        "116",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingFlux",
+    "_meta": {
+      "title": "采样算法（Flux）"
+    }
+  },
+  "85": {
+    "inputs": {
+      "context_expand_pixels": 20,
+      "context_expand_factor": 1,
+      "fill_mask_holes": false,
+      "blur_mask_pixels": 30,
+      "invert_mask": false,
+      "blend_pixels": 16,
+      "rescale_algorithm": "bicubic",
+      "mode": "forced size",
+      "force_width": 1280,
+      "force_height": 1280,
+      "rescale_factor": 1,
+      "min_width": 512,
+      "min_height": 512,
+      "max_width": 768,
+      "max_height": 768,
+      "padding": 32,
+      "image": [
+        "134",
+        0
+      ],
+      "mask": [
+        "135",
+        1
+      ]
+    },
+    "class_type": "InpaintCrop",
+    "_meta": {
+      "title": "✂️ Inpaint Crop"
+    }
+  },
+  "86": {
+    "inputs": {
+      "rescale_algorithm": "bislerp",
+      "stitch": [
+        "85",
+        0
+      ],
+      "inpainted_image": [
+        "111",
+        0
+      ]
+    },
+    "class_type": "InpaintStitch",
+    "_meta": {
+      "title": "✂️ Inpaint Stitch"
+    }
+  },
+  "102": {
+    "inputs": {
+      "noise": [
+        "105",
+        0
+      ],
+      "guider": [
+        "107",
+        0
+      ],
+      "sampler": [
+        "104",
+        0
+      ],
+      "sigmas": [
+        "103",
+        0
+      ],
+      "latent_image": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "自定义采样器（高级）"
+    }
+  },
+  "103": {
+    "inputs": {
+      "scheduler": "beta",
+      "steps": 25,
+      "denoise": 0.6000000000000001,
+      "model": [
+        "116",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "基本调度器"
+    }
+  },
+  "104": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "K采样器选择"
+    }
+  },
+  "105": {
+    "inputs": {
+      "noise_seed": 634976550855133
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "随机噪波"
+    }
+  },
+  "107": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "68",
+        0
+      ],
+      "positive": [
+        "26",
+        0
+      ],
+      "negative": [
+        "64",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFG引导器"
+    }
+  },
+  "108": {
+    "inputs": {
+      "pixels": [
+        "85",
+        1
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE编码"
+    }
+  },
+  "110": {
+    "inputs": {
+      "samples": [
+        "108",
+        0
+      ],
+      "mask": [
+        "85",
+        2
+      ]
+    },
+    "class_type": "SetLatentNoiseMask",
+    "_meta": {
+      "title": "设置Latent噪波遮罩"
+    }
+  },
+  "111": {
+    "inputs": {
+      "samples": [
+        "102",
+        1
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "116": {
+    "inputs": {
+      "model_path": "svdq-int4-flux.1-dev",
+      "cache_threshold": 0,
+      "attention": "nunchaku-fp16",
+      "cpu_offload": "auto",
+      "device_id": 0,
+      "data_type": "bfloat16",
+      "i2f_mode": "enabled"
+    },
+    "class_type": "NunchakuFluxDiTLoader",
+    "_meta": {
+      "title": "Nunchaku FLUX DiT Loader"
+    }
+  },
+  "117": {
+    "inputs": {
+      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "双CLIP加载器"
+    }
+  },
+  "126": {
+    "inputs": {
+      "image": [
+        "134",
+        0
+      ]
+    },
+    "class_type": "GetImageSizeAndCount",
+    "_meta": {
+      "title": "Get Image Size & Count"
+    }
+  },
+  "129": {
+    "inputs": {
+      "filename_prefix": "trmjoutput",
+      "with_workflow": false,
+      "metadata_extra": "{\n  \"Title\": \"Image generated by qihuaimage\",\n  \"Description\": \"More info: https:\\/\\/www.qihuaimage.com\\\",\n}",
+      "image": [
+        "86",
+        0
+      ]
+    },
+    "class_type": "Save image with extra metadata [Crystools]",
+    "_meta": {
+      "title": "🪛 Save image with extra metadata"
+    }
+  },
+  "134": {
+    "inputs": {
+      "url": "https://qihuaimage.tos-cn-guangzhou.volces.com/743a40ca-c8e6-4c2f-90d8-da323bd4e555.png",
+      "timeout": 60,
+      "proxy": ""
+    },
+    "class_type": "LoadSingleImageFromURL",
+    "_meta": {
+      "title": "Load Single Image From URL"
+    }
+  },
+  "135": {
+    "inputs": {
+      "url": "https://qihuaimage.tos-cn-guangzhou.volces.com/f7bd296e-fa3c-49e7-87b8-988ce8deb33a.png",
+      "timeout": 60,
+      "proxy": ""
+    },
+    "class_type": "LoadSingleImageFromURL",
+    "_meta": {
+      "title": "Load Single Image From URL"
+    }
+  }
+}

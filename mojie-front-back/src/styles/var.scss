@@ -1,0 +1,30 @@
+:root{
+  //--el-color-primary: #166cff!important;
+  //
+  //--primary-color: #166cff;
+
+  //菜单栏
+  --sidebar-bg-color:#001525;
+  --sidebar-text-color:rgba(255, 255, 255, 0.65);
+
+  --sidebar-text-active-color:#fff;
+
+  --sidebar-text-hover-color:#fff;
+  --sidebar-bg-hover-color:#182637;
+
+  --sidebar-active-color:var(--primary-color);
+
+  --sidebar-banner-color:#FFF;
+
+  --component-bg:#f5f5f5;
+
+  --panel-bg:#fff;
+
+  ---login-bg:#f9fafb;
+}
+:root.dark{
+
+  --component-bg:#292a2a;
+  --panel-bg:#242525;
+  ---login-bg:var(--component-bg);
+}

@@ -1,0 +1,257 @@
+{
+  "1": {
+    "inputs": {
+      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "双CLIP加载器"
+    }
+  },
+  "2": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "K采样器选择"
+    }
+  },
+  "3": {
+    "inputs": {
+      "noise_seed": 110843111809763
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "随机噪波"
+    }
+  },
+  "4": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "15",
+        0
+      ],
+      "positive": [
+        "13",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFG引导器"
+    }
+  },
+  "5": {
+    "inputs": {
+      "text": "chinese_text, english_text, korean_text,text,watermark, ",
+      "clip": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "6": {
+    "inputs": {
+      "samples": [
+        "8",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "7": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "8": {
+    "inputs": {
+      "noise": [
+        "3",
+        0
+      ],
+      "guider": [
+        "4",
+        0
+      ],
+      "sampler": [
+        "2",
+        0
+      ],
+      "sigmas": [
+        "9",
+        0
+      ],
+      "latent_image": [
+        "19",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "自定义采样器（高级）"
+    }
+  },
+  "9": {
+    "inputs": {
+      "scheduler": "beta",
+      "steps": 25,
+      "denoise": 1,
+      "model": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "基本调度器"
+    }
+  },
+  "10": {
+    "inputs": {
+      "int": 1280
+    },
+    "class_type": "Primitive integer [Crystools]",
+    "_meta": {
+      "title": "🪛 Primitive integer"
+    }
+  },
+  "12": {
+    "inputs": {
+      "max_shift": 1.15,
+      "base_shift": 0.5,
+      "width": [
+        "10",
+        0
+      ],
+      "height": [
+        "18",
+        0
+      ],
+      "model": [
+        "16",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingFlux",
+    "_meta": {
+      "title": "采样算法（Flux）"
+    }
+  },
+  "13": {
+    "inputs": {
+      "clip_l": [
+        "17",
+        0
+      ],
+      "t5xxl": [
+        "17",
+        0
+      ],
+      "guidance": 3.5,
+      "clip": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncodeFlux",
+    "_meta": {
+      "title": "CLIP文本编码Flux"
+    }
+  },
+  "14": {
+    "inputs": {
+      "images": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "预览图像"
+    }
+  },
+  "15": {
+    "inputs": {
+      "lora_name": "room\\MJ风格样板间_flux-MJ风格样板间.safetensors",
+      "strength_model": 0.2,
+      "model": [
+        "16",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoRA加载器（仅模型）"
+    }
+  },
+  "16": {
+    "inputs": {
+      "unet_name": "heige-room.safetensors",
+      "weight_dtype": "fp8_e5m2"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "17": {
+    "inputs": {
+      "string": "A tea room designed with Song Dynasty aesthetics,featuring exquisite furniture,an elegant layout,and a strong sense of symmetry,captured with superb photographic skill., 1. **Furniture**: Minimalist and refined,the wooden tea table and chairs are symmetrically arranged,emphasizing balance and harmony., 2. **Layout**: The space is designed with a deliberate and graceful arrangement,creating a serene and inviting atmosphere., 3. **Symmetry**: The room's elements are carefully placed to reflect the era's love for symmetrical beauty,enhancing the overall aesthetic., 4. **Photography**: The photographer's keen eye for detail and lighting captures the essence of the tea room,highlighting its tranquility and elegance., This tea room is a harmonious blend of ancient aesthetics and modern design,offering a peaceful retreat for tea enthusiasts.,"
+    },
+    "class_type": "Primitive string multiline [Crystools]",
+    "_meta": {
+      "title": "🪛 Primitive string multiline"
+    }
+  },
+  "18": {
+    "inputs": {
+      "int": 1280
+    },
+    "class_type": "Primitive integer [Crystools]",
+    "_meta": {
+      "title": "🪛 Primitive integer"
+    }
+  },
+  "19": {
+    "inputs": {
+      "width": [
+        "10",
+        0
+      ],
+      "height": [
+        "18",
+        0
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "空Latent图像（SD3）"
+    }
+  }
+}
