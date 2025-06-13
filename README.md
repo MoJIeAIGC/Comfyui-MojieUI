@@ -92,17 +92,25 @@ locate = redis://127.0.0.1:6379/6
 ```
 
 ## 七、启动项目
-### 7.1 运行 Django 项目
+### 7.1 生成并执行迁移
+Django 内置了manage.py工具，用于处理数据库迁移：：
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### 7.2 运行 Django 项目
 在项目根目录下，执行以下命令启动 Django 项目：
 ```bash
 python manage.py runserver 0.0.0.0:9152
+```
 ### 7.2 验证项目运行
 打开浏览器，访问 `http://127.0.0.1:8000`，确保项目正常运行。
 ## 八、前端项目
 前端项目位于mojie-front目录下，使用Vue3+Vite进行开发。
 ### 安装依赖
 
-```bash
+bash
 yarn install
 ```
 
