@@ -104,13 +104,12 @@ python manage.py migrate
 ```bash
 python manage.py runserver 0.0.0.0:9152
 ```
-### 7.2 验证项目运行
-打开浏览器，访问 `http://127.0.0.1:8000`，确保项目正常运行。
+
 ## 八、前端项目
 前端项目位于mojie-front目录下，使用Vue3+Vite进行开发。
 ### 安装依赖
 
-bash
+```bash
 yarn install
 ```
 
