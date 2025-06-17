@@ -1,38 +1,63 @@
+
+![logo-beat-DcLpLPoHx.png](logo-beat-DcLpLPoHx.png)
+
+## 项目概述：以comfyui为后端的图像处理UI框架
+MoJie-UI 是一个以comfyui为后端的图像生成UI和server框架，通过redis进行队列服务管理、前端使用vue框架，集成了GPT4O,FLUX-Kkontext，即梦API。能够进行多任务处理，用户支付，积分充值等。本项目依赖于 ComfyUI、Redis 和 MySQL 等服务。
+
+![index-image.png](index-image.png)
+
+![duih-image.png](duih-image.png)
+
+## 视频说明：
+[B站-摩诘AI](https://space.bilibili.com/483532108)
+
+
+## 项目亮点：
+- 前端架构采用Vue.js
+- 后端服务 python-diango
+- 使用redis作为任务缓存，将任务请求依次发送至comfyui
+- 支持多任务多GPU负载均衡。
+- 采用对话式交互+常用功能，支持拖拽，交互体验极佳。
+- 系统开发完善，非常适合快速部署，迅速商业化。
+- 
+
+## 演示地址
+https://www.qihuaimage.com/
+注意：API可以正常使用，comfyui部分未链接，没钱买GPU
+
 # MJApplication_server_new 项目部署文档
 
-## 一、项目概述
-mjAI 是一个集成了多种功能的项目，使用前后端分离的开发模式，涉及模板图片生成、队列服务管理、ComfyUI 任务处理等多个模块。本项目依赖于 ComfyUI、Redis 和 MySQL 等服务，以下是详细的部署说明。
-
-## 二、环境准备
-### 2.1 系统要求
-- 支持 Linux、Windows 或 macOS 操作系统。
+## 环境准备
+### 系统要求
+- 支持 Linux
 - 建议使用 8GB 以上内存的服务器或计算机。
+- GPU推荐A10或L20，或4090以上。
 
-### 2.2 软件依赖
+### 软件依赖
 - **Python 3.7 及以上版本**：用于运行项目代码。
 - **Redis**：用于队列服务和缓存。
 - **MySQL**：用于数据存储。
 - **ComfyUI**：用于图像生成和处理。
+- 详情查看requirements.txt
 
-## 三、ComfyUI 部署
-### 3.1 下载和安装 ComfyUI
-从 ComfyUI 的官方仓库（如 GitHub）下载最新版本的代码，并解压到指定目录。
+## ComfyUI 部署
+### 下载和安装 ComfyUI
+从 ComfyUI 的官方仓库（如 GitHub）下载最新版本的代码，并解压到相关目录。
 
-### 3.2 配置 ComfyUI
-修改 ComfyUI 的配置文件，确保其监听在 1004 端口。具体操作如下：
-1. 找到 ComfyUI 的配置文件（通常为 `config.ini` 或类似名称）。
-2. 找到 `server_address` 配置项，将其修改为 `172.31.16.2:1004`（根据实际情况调整 IP 地址）。
-
-### 3.3 启动 ComfyUI
-在终端中进入 ComfyUI 的目录，执行以下命令启动服务：
+### ComfyUI 配置
+修改 ComfyUI 的配置文件，确保其监听在 1004 端口。具体操作如下： 
+- 为提升安全性，comfyui需安装comfyui-login https://github.com/liusida/ComfyUI-Login
+- 在终端中进入 ComfyUI 的目录，执行以下命令启动服务：
 ```bash
-python main.py --listen 0.0.0.0 --port 1004
+python main.py --listen 0.0.0.0 --port 1004 --disable-metadata
 ```
-确保服务正常启动，并且监听在 1004 端口。
+listen是端口监听，prot是端口号，disable-metadata是关闭图像工作流数据输出
+确保服务正常启动。
 
-## 四、Redis 与 MySQL 容器化部署
 
-### 4.1 启动容器
+## Redis 与 MySQL 容器化部署
+
+### 启动容器
 在项目根目录下，执行以下命令启动 Redis 和 MySQL 容器：
 - **Linux**：启动 Redis 和 MySQL 容器。
 ```bash
@@ -45,9 +70,9 @@ docker-compose ps
 ```
 确保 Redis 和 MySQL 容器正常运行。
 
-## 五、抠图服务配置
+## 抠图服务配置
 根据操作系统的不同，选择合适的安装方式：
-### 5.1 下载模型
+### 下载模型
 通过下方地址下载模型文件，放在BiRefNet目录下：
 ```bash
 https://huggingface.co/yiwangsimple/BiRefNet-general-epoch_244/tree/main
@@ -63,21 +88,21 @@ pip install -r requirements.txt
 python app.py --listen 0.0.0.0 --port 8000
 ```
 
-## 六、后端项目配置
-### 6.1 克隆项目代码
+## 后端项目配置
+### 克隆项目代码
 从代码仓库克隆项目代码到本地：
 ```bash
 git clone <项目仓库地址>
 cd mjAI/MJApplication_server_new
 ```
 
-### 6.2 安装 Python 依赖
+### 安装 Python 依赖
 在项目根目录下，执行以下命令安装 Python 依赖：
 ```bash
 pip install -r requirements.txt
 ```
 
-### 6.3 配置项目参数
+### 配置项目参数
 打开 `config/config.ini` 文件，确保以下基础配置项正确，其他的根据需要自行配置：
 ```ini
 [mysql]
@@ -91,21 +116,21 @@ port = 3306
 locate = redis://127.0.0.1:6379/6
 ```
 
-## 七、启动项目
-### 7.1 生成并执行迁移
+## 启动项目
+### 生成并执行迁移
 Django 内置了manage.py工具，用于处理数据库迁移：：
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 7.2 运行 Django 项目
+### 运行 Django 项目
 在项目根目录下，执行以下命令启动 Django 项目：
 ```bash
 python manage.py runserver 0.0.0.0:9152
 ```
 
-## 八、前端项目
+## 前端项目
 前端项目位于mojie-front目录下，使用Vue3+Vite进行开发。
 ### 安装依赖
 
