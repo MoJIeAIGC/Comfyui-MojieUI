@@ -1,5 +1,11 @@
+<div align="center">
+ <img src="logo-beat-DcLpLPoHx.png" />
+</div>
 
-![logo-beat-DcLpLPoHx.png](logo-beat-DcLpLPoHx.png)
+<div align="center">
+[<a href="readme_en.md">English</a>] | [<a href="readme.md">中文</a>]
+</div>
+
 
 ## 项目概述：以comfyui为后端的图像处理UI框架
 MoJie-UI 是一个以comfyui为后端的图像生成UI和server框架，通过redis进行队列服务管理、前端使用vue框架，集成了GPT4O,FLUX-Kkontext，即梦API。能够进行多任务处理，用户支付，积分充值等。本项目依赖于 ComfyUI、Redis 和 MySQL 等服务。
