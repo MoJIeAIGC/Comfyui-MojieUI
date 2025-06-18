@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-[<a href="readme_en.md">English</a>] | [<a href="readme.md">中文</a>]
+[<a href="/README_EN.md">English</a>] | [<a href="/README.md">中文</a>]
 </div>
 
 
