@@ -76,6 +76,7 @@ CHATGPT_CONFIG = {
     'DEFAULT_SIZE': '1024x1024'
 }
 
+# 你的openai-key#
 CHATGPT_CONFIG_OPENAI = {
     'API_KEY': 'sS',
     'API_URL': 'https://m/v1',
@@ -314,7 +315,7 @@ CACHES = {
 }
 
 
-
+#数据库配置
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

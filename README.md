@@ -19,7 +19,8 @@ MoJie-UI 是一个以comfyui为后端的图像生成UI和server框架，通过re
 - 支持多任务多GPU负载均衡。
 - 采用对话式交互+常用功能，支持拖拽，交互体验极佳。
 - 系统开发完善，非常适合快速部署，迅速商业化。
-- 
+- 支持快速/慢速队列
+- 完整的充值算力积分逻辑
 
 ## 演示地址
 https://www.qihuaimage.com/
@@ -43,13 +44,20 @@ https://www.qihuaimage.com/
 ## ComfyUI 部署
 ### 下载和安装 ComfyUI
 从 ComfyUI 的官方仓库（如 GitHub）下载最新版本的代码，并解压到相关目录。
+请将comfyui单独部署在GPU上，工作流路径在
+```bash
+/mojie-server/comfyui
+```
 
-### ComfyUI 配置
-修改 ComfyUI 的配置文件，确保其监听在 1004 端口。具体操作如下： 
+修改 ComfyUI 的启动命令。： 
 - 为提升安全性，comfyui需安装comfyui-login https://github.com/liusida/ComfyUI-Login
 - 在终端中进入 ComfyUI 的目录，执行以下命令启动服务：
 ```bash
 python main.py --listen 0.0.0.0 --port 1004 --disable-metadata
+```
+也可以开启后台运行
+```bash
+nohup python main.py --listen 0.0.0.0 --port 1004 --disable-metadata > log.txt 2>&1 &
 ```
 listen是端口监听，prot是端口号，disable-metadata是关闭图像工作流数据输出
 确保服务正常启动。
@@ -71,6 +79,7 @@ docker-compose ps
 确保 Redis 和 MySQL 容器正常运行。
 
 ## 抠图服务配置
+抠图是万物迁移的辅助功能，根据原工作流设计需要把图片主体扣出来并自动改成1024X1280尺寸。
 根据操作系统的不同，选择合适的安装方式：
 ### 下载模型
 通过下方地址下载模型文件，放在BiRefNet目录下：
