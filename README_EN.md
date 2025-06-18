@@ -51,3 +51,94 @@ Download the latest version of the code from ComfyUI's official repository (e.g.
 Please deploy ComfyUI separately on GPU, workflow path is in:
 ```bash
 /mojie-server/comfyui
+```
+Modify ComfyUI startup command:
+
+- For enhanced security, ComfyUI needs to install comfyui-login https://github.com/liusida/ComfyUI-Login
+- In terminal, enter ComfyUI directory and execute the following command to start service:
+```
+python main.py --listen 0.0.0.0 --port 
+1004 --disable-metadata
+```
+Or run in background:
+
+```
+nohup python main.py --listen 0.0.0.0 
+--port 1004 --disable-metadata > log.
+txt 2>&1 &
+```
+listen is port monitoring, port is port number, disable-metadata is to disable image workflow data output
+Ensure service starts normally.
+
+## Redis and MySQL Containerized Deployment
+### Start Containers
+In project root directory, execute following command to start Redis and MySQL containers:
+
+- Linux : Start Redis and MySQL containers
+### 4.2 Verify Container Status
+Execute following command to check container status:
+
+Ensure Redis and MySQL containers are running normally.
+
+## Image Matting Service Configuration
+Image matting is an auxiliary function for universal migration. According to original workflow design, it needs to extract image subject and automatically change to 1024X1280 size.
+Choose appropriate installation method based on operating system:
+
+### Download Model
+Download model files through address below, place in BiRefNet directory:
+
+### 5.2 Install Python Dependencies
+In BiRefNet directory, execute following command to install Python dependencies:
+
+### 5.3 Run Flask Project
+In project root directory, execute following command to start Django project:
+
+## Backend Project Configuration
+### Clone Project Code
+Clone project code from code repository to local:
+
+### Install Python Dependencies
+In project root directory, execute following command to install Python dependencies:
+
+### Configure Project Parameters
+Open config/config.ini file, ensure following basic configuration items are correct, configure others as needed:
+
+## Start Project
+### Generate and Execute Migration
+Django has built-in manage.py tool for handling database migrations:
+
+### Run Django Project
+In project root directory, execute following command to start Django project:
+
+## Frontend Project
+Frontend project is located in mojie-front directory, developed using Vue3+Vite.
+
+### Install Dependencies
+### Development Environment
+### Production Environment
+## IX. Backend Management Project (Optional)
+### Install Dependencies
+Frontend project is located in mojie-front-back directory.
+
+```
+yarn install
+```
+### Development Environment
+```
+# Start development server
+yarn dev
+
+# Start development server and specify port
+yarn dev --port 8080
+
+# Start development server and enable HTTPS
+yarn dev --https
+```
+### Production Environment
+```
+# Build production environment
+yarn build
+
+# Preview production environment
+yarn preview
+```
