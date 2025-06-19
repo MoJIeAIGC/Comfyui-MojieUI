@@ -15,8 +15,8 @@ MoJie-UI 是一个以comfyui为后端的图像生成UI和server框架，通过re
 ![duih-image.png](duih-image.png)
 
 ## 视频说明：
-[B站-摩诘AI](https://space.bilibili.com/483532108)
-
+[B站-摩诘AI](https://www.bilibili.com/video/BV1MFNtzREZR/?vd_source=25d3add966daa64cbb811354319ec18d)
+wechat:mojieaigc
 
 ## 项目亮点：
 - 前端架构采用Vue.js

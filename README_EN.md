@@ -14,7 +14,7 @@ MoJie-UI is an image generation UI and server framework based on ComfyUI as the 
 ![duih-image.png](duih-image.png)
 
 ## Video Introduction:
-[BiliBili-MoJie AI](https://space.bilibili.com/483532108)
+[BiliBili-MoJie AI](https://www.bilibili.com/video/BV1MFNtzREZR/?vd_source=25d3add966daa64cbb811354319ec18d)
 
 ## Project Highlights:
 - Frontend architecture using Vue.js
