@@ -11,9 +11,8 @@
 Mojie-UI已正式更名为奇画AI-2.0(beta)，奇画AI是摩诘智影旗下研发的AI商用系统，开箱即用，操作简单友好，效果更直观，可扩展性极佳，也适合电商/广告/创意类用户直接使用。平台已对接国内外主流大厂模型。支持模型微调定制开发，支持对接comfyui/扣子等主流工作流为后端处理，支持企业级部署，二次应用开发和OEM代理。能够进行多任务处理，用户支付，积分充值，分享赚米等。详情可以联系我们。
 原有的MoJie-UI源码开源，但不再维护。
 
-<img src="qecode.jpg" alt="alt text" style="max-width:200px;" />
 
-
+微信：mojieaigc
 访问地址：https://www.qihuaimage.com/
 API调用主站地址：https://www.mojieaigc.com/
 
